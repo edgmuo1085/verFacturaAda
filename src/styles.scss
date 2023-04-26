@@ -1,25 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --bg-color-1: #abbb17;
+  --bg-color-2: #88960d;
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 html {
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   margin: 0;
-  font-family: 'Nunito', 'Helvetica Neue', sans-serif;
+  font-family: 'Raleway', 'Helvetica Neue', sans-serif;
 }
 
 /* custom scroll bar  <- Con esto modificamos la barra de scroll para que parezca embebida */
