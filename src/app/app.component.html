@@ -8,6 +8,17 @@
 <div class="container custom-style">
   <div class="row justify-content-center mt-3">
     <div class="col-12 col-md-10 col-lg-7 text-center">
+      <div class="progress" *ngIf="loading">
+        <div
+          class="progress-bar progress-bar-striped progress-bar-animated"
+          role="progressbar"
+          aria-label="Animated striped example"
+          aria-valuenow="75"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 100%"
+        ></div>
+      </div>
       <div class="container border">
         <div class="row justify-content-center mt-3">
           <div class="col-12 col-md-12">
@@ -17,7 +28,7 @@
 
         <div class="row justify-content-center mt-3">
           <div class="col-12 col-md-12 text-start">
-            <h2>Notificación de ADA S.A.S</h2>
+            <h2>Notificación de {{ factura.codigoCliente ? factura.codigoCliente : '---' }}</h2>
           </div>
         </div>
 
@@ -26,13 +37,13 @@
             <p>Señor(es),</p>
           </div>
           <div class="col-6 col-md-6 text-end">
-            <p>Lopez Rendon Daniel Felipe</p>
+            <p>{{ factura.contactN }}</p>
           </div>
         </div>
 
         <div class="row justify-content-center mt-4">
           <div class="col-12 text-start">
-            <p>Le informamos que ha sido generado un documento de ADA S.A.S</p>
+            <p>Le informamos que ha sido generado un documento de {{ factura.codigoCliente ? factura.codigoCliente : '---' }}</p>
           </div>
         </div>
 
@@ -41,7 +52,7 @@
             <p class="subtitle">Número documento:</p>
           </div>
           <div class="col-6 col-md-6 text-end">
-            <p>NC378</p>
+            <p>{{ factura.dsprefijo + factura.legalNumbe }}</p>
           </div>
         </div>
 
@@ -50,7 +61,7 @@
             <p class="subtitle">Tipo de documento:</p>
           </div>
           <div class="col-6 col-md-6 text-end">
-            <p>NOTA CRÉDITO</p>
+            <p>{{ factura.tipoDocumentoElectronico }}</p>
           </div>
         </div>
 
@@ -59,7 +70,7 @@
             <p class="subtitle">Fecha de emisión:</p>
           </div>
           <div class="col-6 col-md-6 text-end">
-            <p>12/04/2023</p>
+            <p>{{ fechaActual | date : 'dd/MM/yyyy' }}</p>
           </div>
         </div>
 
@@ -68,7 +79,7 @@
             <p class="subtitle">Valor:</p>
           </div>
           <div class="col-6 col-md-6 text-end">
-            <p>1.190.00</p>
+            <p>{{ factura.valorBrutomasTributos | currency : 'USD' : 'symbol' : '1.0-0' }}</p>
           </div>
         </div>
 
@@ -87,10 +98,10 @@
 
         <div class="row justify-content-between mt-5">
           <div class="col-6 col-md-6 text-center">
-            <a class="enlace-confirmacion" href="#">Aceptar</a>
+            <a class="enlace-confirmacion" (click)="aceptarRechazarFactura('1')">Aceptar</a>
           </div>
           <div class="col-6 col-md-6 text-center">
-            <a class="enlace-confirmacion" href="#">Rechazar</a>
+            <a class="enlace-confirmacion" (click)="aceptarRechazarFactura('2')">Rechazar</a>
           </div>
         </div>
 
