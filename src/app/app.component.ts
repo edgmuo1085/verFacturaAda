@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
       next: response => {
         let respuesta = accion === 1 ? 'aprobado' : 'rechazado';
         Swal.fire({
-          icon: 'info',
+          icon: 'success',
           title: 'Correo enviado',
           text: `Usted a ${respuesta} la factura ${this.factura.legalNumbe}`,
         });
