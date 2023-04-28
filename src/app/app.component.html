@@ -67,15 +67,6 @@
 
         <div class="row justify-content-between">
           <div class="col-6 col-md-6 text-start">
-            <p class="subtitle">Fecha de emisión:</p>
-          </div>
-          <div class="col-6 col-md-6 text-end">
-            <p>{{ fechaActual | date : 'dd/MM/yyyy' }}</p>
-          </div>
-        </div>
-
-        <div class="row justify-content-between">
-          <div class="col-6 col-md-6 text-start">
             <p class="subtitle">Valor:</p>
           </div>
           <div class="col-6 col-md-6 text-end">
@@ -96,20 +87,17 @@
           </div>
         </div>
 
-        <div class="row justify-content-between mt-5">
+        <div class="row justify-content-between mt-5" *ngIf="showBotones">
           <div class="col-6 col-md-6 text-center">
-            <a class="enlace-confirmacion" (click)="aceptarRechazarFactura('1')">Aceptar</a>
+            <a class="enlace-confirmacion" (click)="aceptarRechazarFactura(1)">Aceptar</a>
           </div>
           <div class="col-6 col-md-6 text-center">
-            <a class="enlace-confirmacion" (click)="aceptarRechazarFactura('2')">Rechazar</a>
+            <a class="enlace-confirmacion" (click)="aceptarRechazarFactura(2)">Rechazar</a>
           </div>
         </div>
 
-        <div class="row justify-content-between mt-5 mb-3">
-          <div class="col-6 col-md-6 text-start">
-            <img src="./assets/image/logo-ada.png" alt="ada" width="112px" height="32px" class="img-fluid" />
-          </div>
-          <div class="col-6 col-md-6 text-end">
+        <div class="row justify-content-center mt-5 mb-3">
+          <div class="col-6 col-md-6 text-center">
             <a href="https://www.ada.co/es/inicio/" target="_blank" class="enlace">www.ada.co</a>
           </div>
         </div>

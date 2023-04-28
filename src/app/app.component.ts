@@ -3,6 +3,7 @@ import { FacturaService } from './services/factura.service';
 import { Parameters } from './interface/parameters.interface';
 import { FacturaShared } from './interface/factura.interface';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +22,10 @@ export class AppComponent implements OnInit {
     valorBrutomasTributos: 0,
     codigoCliente: 0,
   };
-  fechaActual: Date = new Date();
   loading: boolean = false;
+  showBotones: boolean = false;
 
-  constructor(private facturaService: FacturaService) {}
+  constructor(private router: Router, private facturaService: FacturaService) {}
 
   ngOnInit(): void {
     const consulta = this.getParameterUrl();
@@ -42,6 +43,7 @@ export class AppComponent implements OnInit {
       next: response => {
         this.factura = response;
         this.loading = false;
+        this.showBotones = true;
       },
       error: err => {
         Swal.fire({
@@ -55,7 +57,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  aceptarRechazarFactura(accion: string) {
+  aceptarRechazarFactura(accion: number) {
     if (!this.factura.legalNumbe && !this.factura.compan) {
       Swal.fire({
         icon: 'warning',
@@ -67,7 +69,14 @@ export class AppComponent implements OnInit {
 
     this.facturaService.setAceptarRechazarFactura('' + this.factura.legalNumbe, '' + this.factura.compan, accion).subscribe({
       next: response => {
-        this.factura = response;
+        let respuesta = accion === 1 ? 'aprobado' : 'rechazado';
+        Swal.fire({
+          icon: 'info',
+          title: 'Correo enviado',
+          text: `Usted a ${respuesta} la factura ${this.factura.legalNumbe}`,
+        });
+        this.showBotones = false;
+        this.router.navigate(['/']);
       },
       error: err => {
         Swal.fire({

@@ -16,8 +16,8 @@ export class FacturaService {
     return this.http.get<FacturaShared>(url);
   }
 
-  setAceptarRechazarFactura(factura: string, compania: string, accion: string): Observable<FacturaShared> {
+  setAceptarRechazarFactura(factura: string, compania: string, accion: number): Observable<FacturaShared> {
     const url = `${this.urlRest}enviarcorreo/${factura}/${compania}/${accion}`;
-    return this.http.get<FacturaShared>(url);
+    return this.http.post<FacturaShared>(url, '');
   }
 }
