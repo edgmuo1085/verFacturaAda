@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Ocurrió un error al aceptar/rechazar la factura. Inténtelo más tarde.',
+          text: 'Ocurrió un error al aprobar/rechazar la factura. Inténtelo más tarde.',
         });
         console.error(err);
       },
