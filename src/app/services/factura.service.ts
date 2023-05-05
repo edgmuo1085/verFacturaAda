@@ -7,7 +7,7 @@ import { FacturaShared } from '../interface/factura.interface';
   providedIn: 'root',
 })
 export class FacturaService {
-  urlRest: string = 'http://10.1.20.84:3131/RespuestaaEvento/';
+  urlRest: string = 'https://srv-appeon-000-w23.adacsc.co/RespuestaaEvento/';
 
   constructor(private http: HttpClient) {}
 
